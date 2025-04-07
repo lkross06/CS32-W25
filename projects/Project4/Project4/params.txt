@@ -1,0 +1,7 @@
+/Users/lkross/Desktop/CS32/projects/Project4/Project4/all_flights.txt
+LAX
+NRT
+1736284400
+24
+1
+5

@@ -1,0 +1,3 @@
+Southwest Airlines,1112,LAX,JFK,0,3600,3600
+Southwest Airlines,662,JFK,BOS,3600,7200,3600
+Southwest Airlines,4425,BOS,OGG,7200,0,3600
