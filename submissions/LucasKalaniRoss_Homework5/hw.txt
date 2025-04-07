@@ -1,0 +1,106 @@
+Lucas Kalani Ross
+Carey Nachenberg
+CS32 LEC1
+Mar. 13, 2025
+
+1.
+
+a)
+                                         50
+
+                      20                                 60
+
+            10                    40                                      70
+
+                 15           30                                    63           80
+
+                           27    32                                           75
+
+b)
+
+in order: 10 15 20 27 30 32 40 50 60 63 70 75 80
+pre order: 50 20 10 15 40 30 27 32 60 70 63 80 75
+post order: 15 10 27 32 30 40 20 63 75 80 70 60 50
+
+c)
+
+                                         50
+
+                      15                                 60
+
+            10                    40                                      70
+
+                             27                                    63            80
+
+                                 32                                           75
+
+
+2.
+
+a)
+
+struct BSTNode {
+	int value;
+	BSTNode* right;
+	BSTNode* left;
+	BSTNode* parent;
+};
+
+b)
+
+if root is null pointer:
+	point root to new dynamically-allocated node with given value
+	return true
+keep track of current node and it's parent
+while the current node not null pointer:
+	set parent node to current node
+	if given value less than current node value:
+		traverse to left child
+	if given value greater than current node value:
+		traverse to right child
+	otherwise:
+		return false
+dynamically-allocate a new node with given value
+if given value less than current node value:
+	point parent left child to new node
+if given value greater than current node value:
+	set parent right child to new node
+return true
+
+
+3.
+
+a)
+                                   7
+
+                      5                     6
+
+               2           0            4                    
+
+b)
+
+[7, 5, 6, 2, 0, 4]
+
+c)
+
+[6, 5, 4, 2, 0]
+
+
+4.
+
+a) O(C + S)
+b) O(log(C) + S)
+c) O(log(C) + log(S))
+d) O(log(S))
+e) O(1)
+f) O(log(C) + S)
+g) O(Slog(S))
+h) O(Clog(S))
+
+	
+
+
+
+
+
+	

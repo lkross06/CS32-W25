@@ -1,0 +1,30 @@
+Lucas Kalani Ross
+Carey Nachenberg
+CS32 LEC1
+Mar. 2, 2025
+
+1. A description of the control flow for the interaction of the Player and a goodie. Where in
+the code is the co-location of the two objects detected, and what happens from that point
+until the interaction is finished? Which functions of which objects are called and what do
+they do during the handling of this situation?
+
+All goodies are implemented as a Goodie (which inherits from Actor) and dynamically allocated in StudentWorld::_actors. The player is implemented as a Player (which inherits from Actor) and pointed to in StudentWorld::player. Note that all Actor objects have a member StudentWorld::world that points to the StudentWorld object that it is referenced in, which can be retrieved with Actor::getWorld(). 
+
+Note also that ExtraLifeGoodie and GarlicGoodie both inhreit from Goodie, only differing in their implementation of Goodie::applyGoodie(), a pure virtual function of the Goodie class.
+
+Every call of StudentWorld::move() executes Actor::doSomething() for every Actor object in the vector StudentWorld::_actors. When Goodie::doSomething() is executed, the object gets the player's current position with StudentWorld::getPlayerX() and StudentWorld::getPlayerY() (which returns StudentWorld::player.getX() and StudentWorld::player.getY() respectively). If the Goodie is in the same position as the Player, then it executes Goodie::applyGoodie(). For ExtraLifeGoodie objects, this calls GameWorld::incLives(), and for GarlicGoodie objects, this calls StudentWorld::addBurps(int nB), which increments StudentWorld::_burps by nB.
+
+Right before executing Goodie::applyGoodie(), Goodie::doSomething() also executes Actor::die(), which sets Actor::_isDead to false (which the StudentWorld checks to clean it up in StudentWorld::cleanUp()), and GameWorld::playSound(int soundID) with the appropriate sound.
+
+2. A list of all functionality that you failed to finish as well as known bugs in your classes,
+e.g. “I didn’t implement the Koopa’s freeze logic.” or “My Bonfire code doesn’t actually
+remove Barrels from the maze.”
+
+3. A list of other design decisions and assumptions you made; e.g., “It was not specified
+what to do in situation X, so this is what I decided to do.”
+
+- I assumed that the final level is dictated by the "level__.txt" file with the largest number (<= 99), not the "level__.txt" file with the largest number that also loads properly/in the right format. If there is a "level99.txt" file but it is not formatted correctly, then the player cannot win unless the "level99.txt" file is properly formatted.
+
+- I assumed that the functions Actor::isClimbable() and Actor::isSolid() would not violate rule #1 of best programming practices (not storing a value to determine the type of an object), since Ladders have functionality unique to only themselves. My approach would be scalable to other Wonky Kong actors that may be climbed but are different from Ladders (like Vines?).
+
+- I also put most trivial Actor/StudentWorld functions in their respective header files. I hope this design is alright!

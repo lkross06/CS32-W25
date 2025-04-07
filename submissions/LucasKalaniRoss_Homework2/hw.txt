@@ -1,0 +1,42 @@
+Lucas Kalani Ross
+Carey Nachenberg
+CS32 LEC1
+Feb. 5, 2025
+
+==========
+PROBLEM 2
+==========
+
+(6, 4)
+(6, 3)
+(6, 5)
+(6, 6)
+(7, 5)
+(8, 5)
+(8, 6)
+(8, 7)
+(8, 8)
+(7, 8)
+(5, 4)
+(4, 4)
+
+==========
+PROBLEM 4
+==========
+
+(6, 4)
+(5, 4)
+(6, 5)
+(6, 3)
+(4, 4)
+(7, 5)
+(6, 6)
+(3, 4)
+(4, 5)
+(8, 5)
+(2, 4)
+(4, 6)
+
+The stack-based algorithm performs a depth-first search, in which it checks as deep down the path it can until hitting a dead-end, then branching off of any pre-existing paths. The FIFO nature of a stack prioritizes the newest cells found before older cells, so progress through the maze happens in paths and branches of paths.
+
+On the other hand, the queue-based algorithm performs a breadth-first search, in which it searches the vicinity of cells from the starting cell (much like how water might flow through the maze). The LIFO nature of a queue prioritizes the oldest cells found before newer cells, so progress through the maze happens simulatneously in all directions.

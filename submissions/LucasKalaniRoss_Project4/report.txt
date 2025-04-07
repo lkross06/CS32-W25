@@ -1,0 +1,12 @@
+Lucas Kalani Ross
+Carey Nachenberg
+CS32 LEC1
+Mar. 18, 2025
+
+FlightManager::load_flight_data()
+
+If there are N flights in all_flights.txt and F flights leaving from each airport, then this function takes O(NlogF) time to execute in the average case. It involves N iterations through each line of all_flights.txt, during which it inserts a new FlightSegment into an unordered map, mapping strings of source airports to dynamically-allocated BST sets of FlightSegment objects, sorted by departure time. Inserting into an unordered map takes constant time but sorting into the BST set takes O(logF) time for F flights in the set.
+
+FlightManager::find_flights()
+
+If there are F flights leaving from the source airport and G (out of F total) flights fit in the start-end time range, then in the average case this function takes O(logF + G) time to execute. Using the unordered map of BST sets (see above), the function iterates both to the start and end of a BST subset containing all G valid flights-- these iterations each take O(logF) average time. It then iterates through all G valid flights in order and pushes them to the vector-- O(1) insertion for G iterations. If the time range includes all flights in the BST set, then G = F so the function takes O(F) time to execute.

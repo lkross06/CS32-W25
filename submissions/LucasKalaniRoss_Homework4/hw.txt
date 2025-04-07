@@ -1,0 +1,18 @@
+Lucas Kalani Ross
+Carey Nachenberg
+CS32 LEC1
+Mar. 5, 2025
+
+1e. For vectors, pushing back a new value may cause the vector to move all of its items to a new, larger dynamically-allocated array. Therefore, attempting to iterate through the vector in the third test becomes invalid after k = 2 and new items are added. Lists don't have this problem because they are implemented using linked lists, not dynamically-allocated arrays.
+
+3. The Coord class does not define Coord::operator>(const Coord& rhs), so the Sequence cannot perform > comparison operations between two objects of type Coord to find the Node before which to insert in Sequence::insert(const ItemType& value).
+
+4b. The recursive function requires a way to keep track of the current class's parent class for the string path. It has no way to do so only being given the current class (there's no pointer to the parent class, the class hierarchy only points down).
+
+5a. The time complexity is O(N^3).There are three nested for loops with no dependency on each other for bounds, so 0<=i<=N-1, 0<=j<=N-1, 0<=k<=N-1. The final big Oh is O(N * N * N) = O(N^3).
+
+5b. The time complexity is still O(N^3). The first two nested loops run (1/2)(N * (N - 1)) times, since 0<=i<=N-1 and 0<=j<i. The big Oh of the first two nested loops is therefore O(N^2). Since the innermost loop still iterates from 0 to N, it still performs roughly N operations, and its time complexity is still O(N). The final big Oh is O(N^2 * N) = O(N^3).
+
+6a. The time complexity is O(N^2). Since n1 = n2 = N, the first loop iterates from 0<=k<=N-1, and each of the two calls of Sequence::insert() may iterate through up to 2*k nodes in res, so the big Oh of these nested loops is O(N * (2)(1/2)(N-1)) = O(N^2). The second for loop will not execute at all since n1 = n2 = N, and the final Sequence::swap() call runs in O(1) time, since swapping pointers and sizes does not require any iteration/recursion. The final big Oh is O(N^2 + 1) = O(N^2).
+
+6b. The time complexity is O(N). Since n1 = n2 = N, the first loop visits every node in seq1 and seq2 simultaneously and exactly once in N iterations. Each call of Sequence::insertBefore() executes in O(1) time, since it just changes pointers and does not iterate through nodes. This key difference, compared to calling Sequence::insert() every iteration, makes the algorithm run in O(N) time, since the rest of the function still runs in O(1) time for the same reasons.
